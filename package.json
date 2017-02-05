@@ -16,6 +16,7 @@
     "express": "^4.14.1",
     "jade": "~1.11.0",
     "morgan": "~1.7.0",
+    "mysql": "^2.13.0",
     "node-wit": "^4.2.0",
     "serve-favicon": "~2.3.0"
   },
@@ -45,7 +46,7 @@
       "repo": "https://github.com/ochooma/Okprinting.git",
       "path": "/home/mailersclub/Okprinting",
       "pre-deploy-local": "echo 'This is a local executed command'",
-      "post-deploy": "npm install ; pm2 startOrRestart package.json --env production",
+      "post-deploy": "ln -s ../shared/.env . ; npm install ; pm2 startOrRestart package.json --env production",
       "env": {
         "NODE_ENV": "production"
       }
