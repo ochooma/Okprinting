@@ -22,17 +22,17 @@
     "pm2": "^2.3.0"
   },
   "apps" : [
-		{
-  	  "name"      : "OKP",
-  	  "script"    : "npm start",
-  	  "env": {
-  	    "COMMON_VARIABLE": "true"
-  	  },
-  	  "env_production" : {
-  	    "NODE_ENV": "production"
-  	  }
-  	}
-	],
+    {
+      "name"      : "OKP",
+      "script"    : "bin/www",
+      "env": {
+        "COMMON_VARIABLE": "true"
+      },
+      "env_production" : {
+        "NODE_ENV": "production"
+      }
+    }
+  ],
   "deploy" : {
     "production" : {
       "user" : "mailersclub",
@@ -41,7 +41,7 @@
       "repo" : "https://github.com/ochooma/Okprinting.git",
       "path" : "/home/mailersclub/Okprinting",
       "pre-deploy-local" : "echo 'This is a local executed command'",
-      "post-deploy" : "npm install ; pm2 startOrRestart --env production",
+      "post-deploy" : "npm install ; pm2 startOrRestart package.json --env production",
       "env"  : {
         "NODE_ENV": "production"
       }
