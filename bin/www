@@ -1,9 +1,13 @@
 #!/usr/bin/env node
 
+// dotenv load
+require('dotenv').config();
+
+console.log(process.env);
+
 /**
  * Module dependencies.
  */
-
 var app = require('../app');
 var debug = require('debug')('okprinting:server');
 var http = require('http');
