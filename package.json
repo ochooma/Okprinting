@@ -20,7 +20,9 @@
     "serve-favicon": "~2.3.0"
   },
   "devDependencies": {
+    "chai": "^3.5.0",
     "eslint": "^3.15.0",
+    "mocha": "^3.2.0",
     "pm2": "^2.3.0"
   },
   "apps": [
