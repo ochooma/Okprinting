@@ -52,6 +52,11 @@
       "from": "bignumber.js@3.1.2",
       "resolved": "https://registry.npmjs.org/bignumber.js/-/bignumber.js-3.1.2.tgz"
     },
+    "bluebird": {
+      "version": "3.4.7",
+      "from": "bluebird@latest",
+      "resolved": "https://registry.npmjs.org/bluebird/-/bluebird-3.4.7.tgz"
+    },
     "body-parser": {
       "version": "1.15.2",
       "from": "body-parser@>=1.15.2 <1.16.0",
