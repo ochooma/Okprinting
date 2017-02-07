@@ -1,4 +1,5 @@
 const wit = require('../lib/wit');
+const randomstring = require('randomstring');
 const json = {
   message: {
     text : ''
@@ -7,7 +8,7 @@ const json = {
 
 function post(req, res, _) {
   console.log(req.body);
-  var sessionKey = (new Date()).toString();
+  var sessionKey = randomstring.generate({length: 12, charset: 'alphabetic'});
   //wit.run(req.body.user_key, req.body.content, {}, (message) => {
   wit.run(sessionKey, req.body.content, {}, (message) => {
     json.message.text = message;
