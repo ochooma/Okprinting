@@ -1,5 +1,5 @@
 function del(req, res, _) {
-  console.log('user leaved chat room!: ', req.params.userKey);
+  console.log('user leaved chat room!: ', req.params.user_key);
   console.log(req.body);
   res.json({});
 }

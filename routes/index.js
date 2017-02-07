@@ -9,7 +9,7 @@ router.get('/', (req, res, _) => {
 
 router.get('/keyboard', api.keyboard.get);
 router.post('/message', api.message.post);
-router.post('/friend/:user_key', api.friend.post);
+router.post('/friend', api.friend.post);
 router.delete('/friend/:user_key', api.friend.delete);
 router.delete('/chat_room/:user_key', api.chatRoom.delete);
 
