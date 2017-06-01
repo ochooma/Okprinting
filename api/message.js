@@ -1,29 +1,46 @@
-const wit = require('../lib/wit');
-const randomstring = require('randomstring');
 const json = {
   message: {
     text : ''
+  },
+  keyboard: {
+    type: 'buttons',
+    buttons: [],
   }
 };
 
-function post(req, res, _) {
-  console.log(req.body);
-  var sessionKey = randomstring.generate({length: 12, charset: 'alphabetic'});
-  //wit.run(req.body.user_key, req.body.content, {}, (message) => {
-  wit.run(sessionKey, req.body.content, {}, (message) => {
-    json.message.text = message;
-    res.json(json);
-  }).then((witResponse) => {
-    console.log('witResponse:', witResponse);
-  }).catch((e) => {
-    console.log('exception:', e);
-    json.message.text = '오류가 발생하였습니다';
-    res.json(json);
-  });
+const quizzes = require('./quizzes');
+
+var contexts = {};
+
+function post(req, res) {
+  let currentContext = contexts[req.body.user_key] || {
+    index: 0,
+    score: 0,
+  };
+  var quiz = quizzes[currentContext.index];
+  if (req.body.content === quiz.answers[quiz.answerIndex]) {
+    currentContext.score += 1;
+    json.message.text = '정답입니다.\n';
+  } else if (req.body.content !== '퀴즈시작하기') {
+    json.message.text = '오답입니다.\n';
+  }
+
+  currentContext.index += 1;
+  quiz = quizzes[currentContext.index];
+  if (!quiz) {
+    json.message.text = json.message.text + `퀴즈가 종료되었습니다 점수는 \
+                        ${currentContext.score}/${quizzes.length}점입니다.`;
+    json.keyboard.buttons = ['퀴즈시작하기'];
+    delete contexts[req.body.user_key];
+  } else {
+    json.message.text = json.message.text + quiz.question;
+    json.keyboard.buttons = quiz.answers;
+    contexts[req.body.user_key] = currentContext;
+  }
+  res.json(json);
 }
 
-const message = {
-  post: post
+module.exports = {
+  post: post,
 };
 
-module.exports = message;

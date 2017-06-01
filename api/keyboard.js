@@ -2,7 +2,7 @@ function get(req, res, _) {
   console.log(req.body);
   res.json({
     type: 'buttons',
-    buttons: ['연락처', '견적내기']
+    buttons: ['퀴즈시작하기']
   });
 }
 
