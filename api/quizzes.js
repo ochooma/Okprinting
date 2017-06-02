@@ -44,7 +44,7 @@ module.exports = [
     answers: [
       '손과 손목에 무리를 주지 않기',
       '스트레칭으로 손목 근육 풀기',
-      'PC작업시 손맥패드 미사용',
+      'PC작업시 손목패드 미사용',
       '스마트폰 사용 줄이기',
     ],
     answerIndex: 2,
@@ -67,7 +67,7 @@ module.exports = [
       '급선회 금지',
       '면허 소지자만 운전',
     ],
-    answerIndex: 3,
+    answerIndex: 0,
   },
   {
     question: '건설업 3대 다발 재해가 아닌 것은?',
